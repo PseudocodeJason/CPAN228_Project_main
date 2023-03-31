@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <title>Add form</title>
+</head>
+
+<body>
+    <div class="d-flex flex-column bd-highlight justify-content-center align-items-center w-75 ms-5">
+        <h1 class="mb-3">Clothes Form</h1>
+        <!-- We bind @ModelAttribute called fighter to this HTML form -->
+        <form method="post" th:object="${cloth}" class="form-control-lg">
+          <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+            <div class="card card-signup" style="width: 30rem;">
+            <div class="card-header text-center">
+                <h3 class="card-title title-up">Adding New Cloth to the Catalog</h3>
+                <div class="social-line">
+                  <a href="#pablo" class="btn btn-neutral btn-facebook btn-icon btn-round">
+                    <i class="fab fa-facebook-square"></i>
+                  </a>
+                  <a href="#pablo" class="btn btn-neutral btn-twitter btn-icon btn-lg btn-round">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                  <a href="#pablo" class="btn btn-neutral btn-google btn-icon btn-round">
+                    <i class="fab fa-google-plus"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="input-group no-border">
+                  <div class="input-group-prepend">
+
+                  </div>
+                  <div th:if="${#fields.hasErrors()}">
+                    <span class="text-danger"> Please correct the problems below and resubmit. </span>
+                </div>
+            </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Cloth name: </label>
+                    <!--By using th:field we "bind" fighter model java fields to html input that we will provide-->
+                    <input type="text" class="form-control" id="clothName" th:field="*{name}"
+                        aria-describedby="clothHelp" />
+                    <div id="clothHelp" class="form-text">
+                        Provide decent cloth name
+                    </div>
+                    <span class="validationError text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+                        Name error
+                    </span>
+                </div>
+
+                <div class="input-group no-border">
+                  <div class="input-group-prepend">
+                  </div>
+                  <div class="mb-3">
+                    <label for="yearofcreation" class="form-label">Year of creation: </label>
+                    <input type="number" th:field="*{yearofcreation}" class="form-control" id="yearofcreation" placeholder="Year of creation..." />
+                    <span class="validationError text-danger" th:if="${#fields.hasErrors('yearofcreation')}" th:errors="*{yearofcreation}">
+                        Year of creation error
+                    </span>
+                  </div>
+                </div>
+                <div class="input-group no-border">
+                  <div class="input-group-prepend">
+                  </div>
+                  <div class="mb-3">
+                    <label for="price" class="form-label">Price: </label>
+                    <input type="number" step="0.1" th:field="*{price}" class="form-control" id="price" />
+                    <span class="validationError text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price
+                      Error
+                    </span>
+                  </div>
+                </div>
+
+
+                <div class="input-group no-border">
+                    <div class="input-group-prepend">
+                    </div>
+                    <div class="mb-3">
+                        <label for="brand" class="form-label">Brand: </label>
+                        <select th:field="*{brand}" class="form-select form-select-lg mb-3 " aria-label="Brand selection">
+                          <option th:each="brand: ${brand}" th:value="${brand}" th:text="${brand.brandname}" />
+                        </select>
+                      </div>
+                  </div>
+              </div>
+              <div class="card-footer text-center">
+                <button class="btn btn-neutral btn-round btn-lg">Add Cloth</button>
+              </div>
+            </div>
+
+        </form>
+
+        <form method="post" th:action="@{/add/deleteAllClothes}">
+          <button
+            class="btn btn-danger mt-5"
+          >
+            Delete All Clothes
+          </button>
+        </form>
+    </div>
+</body>
+
+</html>

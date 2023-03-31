@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+      body{
+        align-items: center;
+        align-content: center;
+        text-align: center;
+        background-color: #f8f9fa;
+
+
+      }
+      
+      h1 {
+        color: #3b5998;
+        font-weight: bold;
+        font-size: 48px;
+        margin-bottom: 50px;
+        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+      }
+      input[type="submit"] {
+        background-color: #3b5998;
+        border: none;
+        color: #fff;
+        padding: 10px 30px;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .container {
+        margin-top: 100px;
+        text-align: center;
+      }
+
+    </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to Clothes Warehouse</h1>
+    <form id="goToForm" th:action="@{/login}" method="post">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <br />
+          <input type="submit" value="Login" class="btn btn-primary" />
+        </div>
+      </form>
+      </div>
+</body>
+</html>
