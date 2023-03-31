@@ -5,7 +5,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import com.cpan252.clotheswarehouse.model.Cloth.Brand;
 
-
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
