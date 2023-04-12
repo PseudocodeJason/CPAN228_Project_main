@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+    <title>Tekken User Dashboard</title>
+  </head>
+  <body>
+    <div class="d-flex flex-row mb-3">
+      <div
+        class="card ms-3 me-3"
+        th:each="centre, iStat: ${centres}"
+        style="width: 18rem"
+      >
+        <div class="card-body">
+          <h5 class="card-title" th:text="${centre.name}" />
+          <h6
+            class="card-subtitle mb-2 text-muted"
+            th:text="|Item: ${centre.item}|"
+          />
+          <h6
+            class="card-subtitle mb-2 text-muted"
+            th:text="|Available: ${centre.available}|"
+          />
+          <h6
+            class="card-subtitle mb-2 text-muted"
+            th:text="|Longitude: ${centre.longitude}|"
+          />
+          <h6
+            class="card-subtitle mb-2 text-muted"
+            th:text="|Latitude: ${centre.latitude}|"
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
