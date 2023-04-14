@@ -31,8 +31,8 @@ public class DistributionCentreController {
     @ModelAttribute("centres")
     public List<DistributionCentreDto> getDistributionCentre(){
         var centres = restTemplate.getForObject("http://localhost:8082/api/DistributionCentres", DistributionCentreDto[].class);
-    return Arrays.asList(centres);
-}
+        return Arrays.asList(centres);
+    }
 
 
 
