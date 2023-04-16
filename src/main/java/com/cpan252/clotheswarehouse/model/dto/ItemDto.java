@@ -3,6 +3,9 @@ package com.cpan252.clotheswarehouse.model.dto;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class ItemDto {
     public enum Brand {
         BALENCIAGA("Balenciaga"), STONEISLAND("Stone Island"), DIOR("Dior"), CHANEL("Chanel");
-        
+
         private String brandname;
 
         private Brand(String brandname) {
@@ -24,8 +27,7 @@ public class ItemDto {
             return brandname;
         }
     }
-
-
+    
     private Long id;
     private String name;
     private Brand brand;
@@ -35,4 +37,7 @@ public class ItemDto {
     private int quantity;
     
     private LocalDate createdAt = LocalDate.now();
+
+    @JsonIgnore
+    private DistributionCentreDto distributionCentreDto;
 }

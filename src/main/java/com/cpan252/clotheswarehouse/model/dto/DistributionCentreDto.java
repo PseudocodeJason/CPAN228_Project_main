@@ -1,5 +1,8 @@
 package com.cpan252.clotheswarehouse.model.dto;
 
+
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,10 +11,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DistributionCentreDto {
-    private long id;
+    private int id;
     private String name;
-    private String item;
-    private int available;
     private int longitude;
     private int latitude;
+    private List<ItemDto> item;
 }
