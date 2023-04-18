@@ -42,3 +42,9 @@ http://localhost:8082/api/DistributionCentre/1/items/by-name/T-Shirt
 
 ![image](https://user-images.githubusercontent.com/32995324/232350476-eb5b348a-bda7-4a78-8b3a-8e5873c150a3.png)
 
+
+[http://localhost:8082/h2-console
+JDBC URL:jdbc:h2:mem:distributioncentre
+![image](https://user-images.githubusercontent.com/32995324/232786402-32c04867-1856-4c5b-9de9-fa7c382f38f2.png)
+
+
