@@ -17,20 +17,21 @@ import com.cpan252.clotheswarehouse.model.dto.DistributionCentreDto;
 @RequestMapping("/admin")
 @CrossOrigin(origins = "http://localhost:8082")
 public class ClothesManagment {
-    private RestTemplate restTemplate;
- 
-    public ClothesManagment(RestTemplate restTemplate){
-        this.restTemplate = restTemplate;
-    }
+  private RestTemplate restTemplate;
 
-    @GetMapping
-    public String clothesManagment(){
-        return "clothesManagment";
-    }
+  public ClothesManagment(RestTemplate restTemplate) {
+    this.restTemplate = restTemplate;
+  }
 
-    @ModelAttribute("centres")
-    public List<DistributionCentreDto> getDistributionCentre(){
-        var centres = restTemplate.getForObject("http://localhost:8082/api/DistributionCentres", DistributionCentreDto[].class);
-        return Arrays.asList(centres);
-    }
+  @GetMapping
+  public String clothesManagment() {
+    return "clothesManagment";
+  }
+
+  @ModelAttribute("centres")
+  public List<DistributionCentreDto> getDistributionCentre() {
+    var centres = restTemplate.getForObject("http://localhost:8082/api/DistributionCentre",
+        DistributionCentreDto[].class);
+    return Arrays.asList(centres);
+  }
 }
