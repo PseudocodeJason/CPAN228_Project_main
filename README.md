@@ -7,11 +7,11 @@ Add support to request items for Clothes WarehouseProject in the distribution ce
 - Distribution centre should expose following endpoints: add item to distribution centre, delete item, list all distributioncentres, request item by brand and name - 7% # Done - Melody #
 - Database interaction for all the above methods should besupported (included in 7% above) # Done - Melody #
 - <del> Create two Spring profiles for distribution centre with differentdata sources: H2 for dev and PostgreSQL for QA, pleaseuse Docker for Postgres DB and make sure that alloperations work correctly - 5% # Deleted by the teacher #</del>
-- Create a form on the admin distribution centre page to requestitem by brand and name, logic should be the following(4%): # Doing - Mohammed #
-- Form contains two fields: name and brand dropdown and submitbutton # Doing - Mohammed #
+- Create a form on the admin distribution centre page to requestitem by brand and name, logic should be the following(4%): # Done - Jonathan #
+- Form contains two fields: name and brand dropdown and submitbutton # Done - Jonathan #
 - On form submission we should check which distribution centrecontains items for these parameters
-- Between centres with available items items should be requestedfrom the closest centre to the warehouse (warehouse shouldhave GTA area coordinates, exact location is up to you), youshould have at least 4 distribution centres and be able toclearly show me that logic works # Doing - Mohammed #
-- If successful, stock should be replenished in warehouse anddeducted from distribution centre from which we get theitem, else we are redirected to the error page that containsmessage that stock can’t be replenished- Add bootstrap styling to all components (1%)
+- Between centres with available items items should be requestedfrom the closest centre to the warehouse (warehouse shouldhave GTA area coordinates, exact location is up to you), youshould have at least 4 distribution centres and be able toclearly show me that logic works # Doing - Jonathan #
+- If successful, stock should be replenished in warehouse anddeducted from distribution centre from which we get theitem, else we are redirected to the error page that containsmessage that stock can’t be replenished- Add bootstrap styling to all components (1%) # Done - Jonathan #
 
 Spring Initializr
 ![image](https://user-images.githubusercontent.com/32995324/229323795-ea937b64-6802-42e2-9164-4784f8210c52.png)
