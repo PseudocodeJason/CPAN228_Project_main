@@ -1,14 +1,128 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clothes managment page</title>
-</head>
-<body>
-    <h1>Clothes Management</h1>
-       <p>This content is only visible to users with the admin role.</p>
-    
-</body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+    <title>Clothes Management</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Clothes Warehouse</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Clothes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Distribution Centres</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container my-5">
+      <h1>Clothes Management</h1>
+
+      <h3 class="mt-5">Request Item by Brand and Name</h3>
+      <form th:action="@{/clothes/request}" method="post">
+        <div class="row mt-3">
+          <div class="col-md-3">
+            <label for="brand-select" class="form-label">Brand:</label>
+            <select id="brand-select" name="brand" class="form-select">
+              <option value="">-- Select Brand --</option>
+              <option
+                th:each="brand : ${T(com.cpan252.clotheswarehouse.model.Cloth$Brand).values()}"
+                th:value="${brand}"
+                th:text="${brand.getBrandname()}"
+              ></option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label for="name-input" class="form-label">Name:</label>
+            <input
+              type="text"
+              id="name-input"
+              name="name"
+              class="form-control"
+            />
+          </div>
+          <div class="col-md-3">
+            <button type="submit" class="btn btn-primary mt-4">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="container my-5">
+      <h3 class="mt-5">Available Items</h3>
+      <table class="table table-striped mt-3">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Year of Creation</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="cloth : ${clothes}">
+            <td th:text="${cloth.id}"></td>
+            <td th:text="${cloth.name}"></td>
+            <td th:text="${cloth.brand.brandname}"></td>
+            <td th:text="${cloth.yearofcreation}"></td>
+            <td th:text="${cloth.price}"></td>
+            <td>
+              <a
+                th:href="@{/clothes/details/{id}(id=${cloth.id})}"
+                class="btn btn-sm btn-secondary me-2"
+              >
+                <i class="bi bi-info-circle"></i> Details
+              </a>
+              <a
+                th:href="@{/clothes/edit/{id}(id=${cloth.id})}"
+                class="btn btn-sm btn-primary me-2"
+              >
+                <i class="bi bi-pencil-square"></i> Edit
+              </a>
+              <a
+                th:href="@{/clothes/delete/{id}(id=${cloth.id})}"
+                class="btn btn-sm btn-danger"
+                onclick="return confirm('Are you sure you want to delete this item?');"
+              >
+                <i class="bi bi-trash"></i> Delete
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
 </html>
