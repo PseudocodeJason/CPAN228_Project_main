@@ -26,12 +26,15 @@ public class CreateCloth {
     @NotNull
     private Brand brand;
 
+    private int quantity;
+
     public Cloth toCloth() {
         return Cloth.builder()
                 .name(this.getName())
                 .yearofcreation(this.getYearofcreation())
                 .price(this.getPrice())
                 .brand(this.getBrand())
+                .quantity(this.getQuantity())
                 .build();
     }
 }

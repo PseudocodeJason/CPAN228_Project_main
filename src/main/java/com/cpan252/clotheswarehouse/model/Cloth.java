@@ -26,7 +26,7 @@ public class Cloth {
 
     public enum Brand {
         BALENCIAGA("Balenciaga"), STONEISLAND("Stone Island"), DIOR("Dior"), CHANEL("Chanel");
-        
+
         @JsonValue
         @NotBlank
         private String brandname;
@@ -42,7 +42,7 @@ public class Cloth {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     @NotBlank
     private String name;
     private Brand brand;
@@ -50,7 +50,7 @@ public class Cloth {
     private int yearofcreation;
     @DecimalMin(value = "1000.1", inclusive = true)
     private BigDecimal price;
-
+    private int quantity;
 
     @Builder.Default
     private LocalDate createdAt = LocalDate.now();
