@@ -50,6 +50,7 @@ public class Cloth {
     private int yearofcreation;
     @DecimalMin(value = "1000.1", inclusive = true)
     private BigDecimal price;
+    private int quantity;
 
 
     @Builder.Default

@@ -29,19 +29,19 @@ public class ClotheswarehouseApplication {
 			.name("Balenciaga_1")
 			.brand(Brand.BALENCIAGA)
 			.yearofcreation(2022)
-			.price(new BigDecimal(42452.5)).build());
+			.price(new BigDecimal(42452.5)).quantity(1).build());
 
 			repository.save(Cloth.builder()
 			.name("Balenciaga_2")
 			.brand(Brand.BALENCIAGA)
 			.yearofcreation(2024)
-			.price(new BigDecimal(12542.5)).build());
+			.price(new BigDecimal(12542.5)).quantity(1).build());
 
 			repository.save(Cloth.builder()
 			.name("Balenciaga_3")
 			.brand(Brand.BALENCIAGA)
 			.yearofcreation(2022)
-			.price(new BigDecimal(42452.5)).build());
+			.price(new BigDecimal(42452.5)).quantity(1).build());
 
 			repository.save(Cloth.builder()
 			.name("Balenciaga_4")
