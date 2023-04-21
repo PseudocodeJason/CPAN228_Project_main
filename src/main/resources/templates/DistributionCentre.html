@@ -14,26 +14,85 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
     />
-    <title>Tekken User Dashboard</title>
+    <title>Distribution Centers</title>
   </head>
   <body>
-    <div class="d-flex flex-row mb-3">
-      <div
-        class="card ms-3 me-3"
-        th:each="centre, iStat: ${centres}"
-        style="width: 18rem"
-      >
-        <div class="card-body">
-          <h5 class="card-title" th:text="${centre.name}" />
-          <h6
-            class="card-subtitle mb-2 text-muted"
-            th:text="|Longitude: ${centre.longitude}|"
-          />
-          <h6
-            class="card-subtitle mb-2 text-muted"
-            th:text="|Latitude: ${centre.latitude}|"
-          />
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/admin">Clothes Warehouse</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/clothlist">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/centres">Distribution Centres</a>
+            </li>
+          </ul>
         </div>
+      </div>
+    </nav>
+      
+      <div class="container my-5">
+        <h3 class="mt-5">Distribution Centers</h3>
+        <table class="table table-striped mt-3">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Latitude</th>
+              <th>Longitude</th>
+              <th>Items Available</th>
+              <th>Actions</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="centre : ${centres}">
+              <td th:text="${centre.id}"></td>
+              <td th:text="${centre.name}"></td>
+              <td th:text="${centre.latitude}"></td>
+              <td th:text="${centre.longitude}"></td>
+              <td>
+                <div th:each="item : ${centre.item}">
+                  <span th:text="${item.name}"></span> - <span th:text="${item.quantity}"></span>
+                </div>
+              </td>
+              <td>
+                <a
+                  th:href="@{/admin/centre/{id}(id=${centre.id})}"
+                  class="btn btn-sm btn-secondary me-2"
+                >
+                  <i class="bi bi-info-circle"></i> Details
+                </a>
+              </td>
+              <td>
+                <form
+                  th:action="@{/admin/centres/delete/{id}(id=${centre.id})}"                  
+                  method="POST"
+                  onclick="return confirm('Are you sure you want to delete this Warehouse?');"
+                  >
+                  <button type="submit" class="btn btn-sm btn-danger me-2">
+                    <i class="bi bi-trash"></i> Delete Warehouse
+                  </button>  
+                </form>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       </div>
     </div>
   </body>
